@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Gevorg Arushanyan — Product Manager">
+<title>Gevorg Arushanyan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232563eb'/%3E%3Ctext x='50' y='66' font-family='Arial' font-size='52' font-weight='800' fill='white' text-anchor='middle'%3EGA%3C/text%3E%3C/svg%3E">
+<style>
+/* ═══ TOKENS ════════════════════════════ */
+:root {
+  color-scheme: light;
+  --blue:#1e3a8a; --blue-mid:#1d4ed8; --blue-lt:#2563eb;
+  --blue-50:#eff6ff; --blue-100:#60a5fa; --blue-200:#60a5fa;
+  --bg:#ffffff; --bg-soft:#f8faff; --bg-card:#ffffff; --bg-stripe:#0a1628;
+  --text:#111827; --text-muted:#6b7280;
+  --border:#e5e7eb; --border-lt:#f3f4f6;
+  --shadow:0 4px 24px rgba(29,78,216,.09);
+  --shadow-lg:0 8px 40px rgba(29,78,216,.13);
+  --font-display:'Bricolage Grotesque',sans-serif;
+  --font-body:'Outfit',sans-serif;
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --blue:#2563eb; --blue-mid:#3b82f6; --blue-lt:#60a5fa;
+  --blue-50:rgba(37,99,235,.10); --blue-100:rgba(37,99,235,.18); --blue-200:rgba(37,99,235,.30);
+  --bg:#0a0e1a; --bg-soft:#0f1422; --bg-card:#131829; --bg-stripe:#060912;
+  --text:#f1f5f9; --text-muted:#94a3b8;
+  --border:#1e2638; --border-lt:#161e2f;
+  --shadow:0 4px 24px rgba(0,0,0,.4); --shadow-lg:0 8px 40px rgba(0,0,0,.6);
+}
+/* Russian uses Noto Sans for Cyrillic */
+[data-lang="ru"] { --font-body:'Noto Sans','Outfit',sans-serif; }
+
+/* ═══ BASE ══════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:72px;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s;}
+a{color:inherit;text-decoration:none;}
+svg{display:block;flex-shrink:0;}
+
+/* ═══ ANIMATIONS ════════════════════════ */
+@keyframes float   {0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes spin-cw {to{transform:rotate(360deg)}}
+@keyframes spin-ccw{to{transform:rotate(-360deg)}}
+@keyframes shimmer {0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes fade-up {from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes scale-in{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes blink   {0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes pg      {0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2)}50%{box-shadow:0 0 0 8px rgba(34,197,94,.04)}}
+@keyframes pulse-ring{0%,100%{box-shadow:0 0 0 0 rgba(29,78,216,.4)}50%{box-shadow:0 0 0 8px rgba(29,78,216,0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* ═══ SCROLL BAR ═══════════════════════ */
+.scroll-bar{position:fixed;top:0;left:0;z-index:500;height:3px;width:0;background:linear-gradient(90deg,var(--blue-mid),var(--blue-lt));box-shadow:0 0 8px rgba(29,78,216,.4);transition:width .1s linear;pointer-events:none;}
+
+/* ═══ NAV ═══════════════════════════════ */
+nav{position:fixed;top:0;width:100%;z-index:200;height:68px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);padding:0 4rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s,border-color .3s;}
+[data-theme="dark"] nav{background:rgba(10,14,26,.82);}
+.nav-brand{display:flex;align-items:center;gap:.75rem;}
+.nav-logo{width:38px;height:38px;border-radius:10px;background:var(--blue-mid);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.9rem;flex-shrink:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+.nav-brand:hover .nav-logo{transform:rotate(-8deg) scale(1.06);}
+.nav-brand-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:.95rem;color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:.4rem;}
+.nav-links{list-style:none;display:flex;gap:.1rem;align-items:center;}
+.nav-links a{display:block;padding:.5rem .95rem;color:var(--text-muted);font-size:.83rem;font-weight:400;border-radius:8px;position:relative;transition:color .2s,background .2s;}
+.nav-links a::after{content:'';position:absolute;left:50%;bottom:.3rem;width:0;height:2px;background:var(--blue-mid);border-radius:1px;transition:width .25s,left .25s;}
+.nav-links a:not(.nav-cta):hover::after,.nav-links a.active::after{width:22px;left:calc(50% - 11px);}
+.nav-links a:hover,.nav-links a.active{color:var(--blue-mid);}
+.nav-cta{background:var(--blue-mid)!important;color:#fff!important;border-radius:9px!important;padding:.5rem 1.2rem!important;font-weight:500!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.nav-cta:hover{background:var(--blue)!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(29,78,216,.3);}
+.nav-cta::after{display:none;}
+
+/* language switcher */
+.lang-sw{display:flex;background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:3px;gap:2px;margin-left:.5rem;}
+.lang-btn{padding:.32rem .6rem;font-size:.75rem;font-weight:600;letter-spacing:.05em;border-radius:7px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;font-family:var(--font-body);transition:background .2s,color .2s;}
+.lang-btn:hover{color:var(--blue-mid);}
+.lang-btn.active{background:var(--blue-mid);color:#fff;}
+.cv-btn{display:flex;align-items:center;gap:.35rem;padding:.32rem .7rem;font-size:.75rem;font-weight:600;letter-spacing:.03em;border-radius:8px;border:1px solid var(--blue-200);background:transparent;color:var(--blue-mid);cursor:pointer;font-family:var(--font-body);transition:all .2s;margin-left:.4rem;white-space:nowrap;}
+.cv-btn:hover{background:var(--blue-50);border-color:var(--blue-mid);}
+.cv-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* theme toggle */
+.theme-btn{width:38px;height:38px;border-radius:10px;background:transparent;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:all .25s;margin-left:.4rem;}
+.theme-btn:hover{color:var(--blue-mid);border-color:var(--blue-200);background:var(--blue-50);transform:scale(1.05);}
+.theme-btn:active{transform:scale(.95);}
+.theme-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.theme-btn:hover svg{transform:rotate(20deg);}
+.icon-sun{display:none;} .icon-moon{display:block;}
+[data-theme="dark"] .icon-sun{display:block;} [data-theme="dark"] .icon-moon{display:none;}
+
+/* hamburger */
+.menu-btn{display:none;width:38px;height:38px;border-radius:10px;background:transparent;border:1px solid var(--border);cursor:pointer;color:var(--text);align-items:center;justify-content:center;transition:border-color .2s,background .2s;}
+.menu-btn:hover{border-color:var(--blue-200);background:var(--blue-50);}
+.menu-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;}
+
+/* ═══ HERO ══════════════════════════════ */
+#hero{background:var(--bg);min-height:100vh;padding-top:68px;position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-blobs{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.blob-a{position:absolute;right:-10%;top:-5%;width:clamp(300px,55vw,700px);height:clamp(300px,55vw,700px);border-radius:50%;background:radial-gradient(circle,rgba(29,78,216,.11) 0%,transparent 70%);animation:float 14s ease-in-out infinite;}
+.blob-b{position:absolute;left:-8%;bottom:-10%;width:clamp(240px,40vw,500px);height:clamp(240px,40vw,500px);border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.07) 0%,transparent 70%);animation:float 18s ease-in-out infinite reverse;}
+[data-theme="dark"] .blob-a{background:radial-gradient(circle,rgba(37,99,235,.18) 0%,transparent 70%);}
+[data-theme="dark"] .blob-b{background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 70%);}
+.hero-deco{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:clamp(180px,22vw,300px);height:clamp(180px,22vw,300px);pointer-events:none;opacity:.3;}
+.hero-deco svg{width:100%;height:100%;animation:spin-cw 70s linear infinite;}
+[data-theme="dark"] .hero-deco{opacity:.18;}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:4rem;display:grid;grid-template-columns:1.35fr .65fr;gap:4rem;align-items:center;width:100%;}
+
+/* hero left */
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue-50);border:1px solid var(--blue-200);border-radius:100px;padding:.3rem 1rem .3rem .5rem;font-size:.78rem;color:var(--blue-mid);font-weight:500;margin-bottom:1.75rem;animation:fade-up .6s ease-out both;}
+.badge-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;animation:pg 2s infinite;}
+h1.hero-name{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(3.2rem,6vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-.04em;color:var(--text);margin-bottom:.7rem;animation:fade-up .7s ease-out .1s both;}
+h1.hero-name .name-accent{background:linear-gradient(120deg,var(--blue-mid) 0%,var(--blue-lt) 30%,var(--blue) 60%,var(--blue-lt) 80%,var(--blue-mid) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;display:inline-block;}
+.hero-role{font-size:.82rem;font-weight:500;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem;animation:fade-up .7s ease-out .2s both;}
+.hero-role-line{width:32px;height:2px;background:var(--blue-mid);flex-shrink:0;}
+.cursor-blink{display:inline-block;width:2px;height:.9em;background:var(--blue-mid);margin-left:2px;vertical-align:middle;animation:blink 1s steps(2) infinite;}
+.hero-loc{display:inline-flex;align-items:center;gap:.4rem;background:var(--blue-50);border:1px solid var(--blue-100);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--blue-mid);font-weight:500;margin-bottom:1.75rem;animation:fade-up .7s ease-out .25s both;}
+.hero-loc svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.hero-quote{font-size:1rem;color:var(--text-muted);line-height:1.65;font-weight:300;border-left:3px solid var(--blue-mid);padding-left:1rem;margin-bottom:2.5rem;max-width:480px;animation:fade-up .7s ease-out .3s both;}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;animation:fade-up .7s ease-out .4s both;}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:10px;font-family:var(--font-body);font-size:.86rem;font-weight:500;border:1.5px solid transparent;cursor:pointer;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s,background .22s,border-color .22s,color .22s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .22s;}
+.btn:hover{transform:translateY(-2px);}
+.btn:hover svg{transform:translateX(2px);}
+.btn-primary{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);}
+.btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:left .55s;}
+.btn-primary:hover::before{left:100%;}
+.btn-primary:hover{background:var(--blue);border-color:var(--blue);box-shadow:0 8px 24px rgba(29,78,216,.3);}
+.btn-outline{background:transparent;color:var(--blue-mid);border-color:var(--blue-200);}
+.btn-outline:hover{border-color:var(--blue-mid);background:var(--blue-50);}
+
+/* hero right — language card */
+.hero-right{position:relative;}
+.ring-outer{position:absolute;right:-40px;top:-40px;width:190px;height:190px;border-radius:50%;border:1.5px dashed var(--blue-200);pointer-events:none;z-index:0;animation:spin-cw 42s linear infinite;}
+.ring-inner{position:absolute;right:-14px;top:-14px;width:132px;height:132px;border-radius:50%;border:1.5px solid var(--blue-100);pointer-events:none;z-index:0;animation:spin-ccw 52s linear infinite;}
+.lang-card{position:relative;z-index:1;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:1.75rem;box-shadow:var(--shadow-lg);overflow:hidden;animation:scale-in .8s cubic-bezier(.34,1.56,.64,1) .2s both;}
+.lang-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue-mid),var(--blue-lt),var(--blue-mid));background-size:200% 100%;animation:shimmer 5s linear infinite;}
+.lang-card-header{display:flex;align-items:center;gap:.85rem;padding-bottom:1.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--border);}
+.lang-card-icon{width:42px;height:42px;border-radius:11px;background:var(--blue-50);border:1px solid var(--blue-100);display:flex;align-items:center;justify-content:center;color:var(--blue-mid);flex-shrink:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+.lang-card:hover .lang-card-icon{transform:rotate(-8deg) scale(1.06);}
+.lang-card-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.lang-card-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);}
+.lang-card-sub{font-size:.74rem;color:var(--text-muted);margin-top:.15rem;}
+.lang-list{display:flex;flex-direction:column;gap:1rem;}
+.lang-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.45rem;}
+.lang-name-text{font-size:.9rem;font-weight:500;color:var(--text);font-family:var(--font-display);}
+.lang-level{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-mid);background:var(--blue-50);border:1px solid var(--blue-100);padding:.18rem .6rem;border-radius:20px;}
+.lang-bar{height:6px;background:var(--border-lt);border-radius:3px;overflow:hidden;}
+[data-theme="dark"] .lang-bar{background:var(--border);}
+.lang-bar-fill{height:100%;border-radius:3px;width:0;background:linear-gradient(90deg,var(--blue-mid),var(--blue-lt));position:relative;transition:width 1.4s cubic-bezier(.16,1,.3,1) .4s;}
+.lang-bar-fill::after{content:'';position:absolute;top:0;right:0;width:8px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6));border-radius:3px;}
+.lang-card.bars-active .lang-bar-fill{width:var(--lvl);}
+
+/* ═══ METRICS ═══════════════════════════ */
+.metrics-stripe{background:var(--bg-stripe);padding:3rem 4rem;position:relative;overflow:hidden;}
+.metrics-stripe::before{content:'';position:absolute;inset:0;background:linear-gradient(130deg,rgba(29,78,216,.25) 0%,transparent 55%);pointer-events:none;}
+.metrics-stripe::after{content:'';position:absolute;bottom:-50%;right:-8%;width:50%;height:200%;background:radial-gradient(ellipse,rgba(59,130,246,.14) 0%,transparent 60%);pointer-events:none;}
+.metrics-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;z-index:1;text-align:center;}
+.metric{transition:transform .3s;}
+.metric:hover{transform:translateY(-4px);}
+.metric-num{font-family:'Bricolage Grotesque',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-.04em;margin-bottom:.5rem;}
+.metric-num em{font-style:normal;color:#60a5fa;}
+.metric-label{font-size:.73rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.12em;}
+
+/* ═══ SECTIONS ══════════════════════════ */
+.sw{max-width:1200px;margin:0 auto;padding:6rem 4rem;}
+.sec-lbl{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--blue-mid);background:var(--blue-50);border:1px solid var(--blue-100);border-radius:6px;padding:.28rem .75rem;margin-bottom:1rem;}
+h2.sec-h{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:var(--text);letter-spacing:-.025em;line-height:1.12;margin-bottom:.5rem;}
+.sec-sub{font-size:.95rem;color:var(--text-muted);font-weight:300;margin-bottom:3rem;max-width:680px;}
+.sec-div{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);max-width:1200px;margin:0 auto;}
+
+/* ═══ EXPERIENCE ════════════════════════ */
+#experience{background:var(--bg);}
+.exp-layout{display:grid;grid-template-columns:250px 1fr;gap:5rem;}
+.exp-cnt{font-family:'Bricolage Grotesque',sans-serif;font-size:3rem;font-weight:800;color:var(--text);line-height:1;letter-spacing:-.04em;margin-bottom:.35rem;}
+.exp-cnt-lbl{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--blue-mid);margin-bottom:1.25rem;}
+.exp-side p{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:1rem;}
+.tl{position:relative;}
+.tl-line{position:absolute;left:0;top:10px;bottom:20px;width:2px;background:linear-gradient(180deg,var(--blue-mid) 0%,var(--blue-100) 75%,transparent 100%);}
+.co{padding-left:2.25rem;margin-bottom:2.5rem;position:relative;}
+.co::before{content:'';position:absolute;left:-7px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--blue-mid);border:3px solid var(--bg);box-shadow:0 0 0 3px var(--blue-100);transition:transform .3s,box-shadow .3s;}
+.co:hover::before{transform:scale(1.25);box-shadow:0 0 0 5px var(--blue-100);}
+.co-head{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.75rem;}
+.co-name{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--text);display:inline-flex;align-items:center;gap:.35rem;position:relative;transition:color .2s;}
+.co-name::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--blue-mid);transition:width .3s;border-radius:1px;}
+.co-name:hover{color:var(--blue-mid);}
+.co-name:hover::after{width:calc(100% - 18px);}
+.ext{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.45;transition:opacity .2s,transform .2s;}
+.co-name:hover .ext{opacity:1;transform:translate(2px,-2px);}
+.tag{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--blue-mid);background:var(--blue-50);border:1px solid var(--blue-100);padding:.14rem .55rem;border-radius:5px;}
+.roles{display:flex;flex-direction:column;gap:.55rem;}
+.rc{background:var(--bg-soft);border:1px solid var(--border);border-radius:11px;padding:.95rem 1.2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;position:relative;overflow:hidden;transition:border-color .22s,background .22s,box-shadow .22s,transform .22s;}
+.rc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue-mid);transform:scaleY(0);transform-origin:center;transition:transform .3s;}
+.rc:hover{border-color:var(--blue-200);background:var(--bg-card);box-shadow:var(--shadow);transform:translateX(4px);}
+.rc:hover::before{transform:scaleY(1);}
+.rt{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:.15rem;}
+.rs{font-size:.77rem;color:var(--blue-mid);}
+.rd{font-size:.73rem;color:var(--text-muted);white-space:nowrap;background:var(--bg);border:1px solid var(--border);padding:.22rem .6rem;border-radius:6px;font-weight:500;flex-shrink:0;}
+
+/* ═══ COMPETENCIES ══════════════════════ */
+#comp-bg{background:var(--bg-soft);}
+.comp-list{display:flex;flex-direction:column;gap:1rem;}
+.cc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;display:grid;grid-template-columns:56px 1fr 1fr;gap:2rem;align-items:start;position:relative;overflow:hidden;transition:border-color .28s,box-shadow .28s,transform .28s;}
+.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue-mid),transparent);transform:scaleX(0);transition:transform .4s;}
+.cc:hover{border-color:var(--blue-200);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.cc:hover::before{transform:scaleX(1);}
+.ci{width:48px;height:48px;border-radius:12px;background:var(--blue-50);border:1px solid var(--blue-100);display:flex;align-items:center;justify-content:center;color:var(--blue-mid);transition:background .32s,color .32s,border-color .32s,transform .35s cubic-bezier(.34,1.56,.64,1);}
+.cc:hover .ci{background:var(--blue-mid);color:#fff;border-color:var(--blue-mid);transform:rotate(-8deg) scale(1.08);}
+.ci svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.ct{font-family:var(--font-display);font-size:1.12rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.cd{font-size:.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;}
+.pills{display:flex;flex-wrap:wrap;gap:.4rem;align-content:flex-start;}
+.pill{font-size:.77rem;color:var(--text-muted);background:var(--bg-soft);border:1px solid var(--border);padding:.28rem .65rem;border-radius:6px;transition:color .2s,border-color .2s,background .2s,transform .2s;cursor:default;}
+.pill:hover{color:var(--blue-mid);border-color:var(--blue-200);background:var(--blue-50);transform:translateY(-2px);}
+
+/* ═══ EDUCATION ═════════════════════════ */
+#education{background:var(--bg);}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;}
+.ec{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:border-color .28s,box-shadow .28s,transform .28s;}
+.ec:hover{border-color:var(--blue-200);box-shadow:var(--shadow-lg);transform:translateY(-4px);}
+.ec::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue-mid),var(--blue-lt));transition:height .3s;}
+.ec:hover::after{height:6px;}
+.ei{width:46px;height:46px;border-radius:13px;background:var(--blue-50);border:1px solid var(--blue-100);display:flex;align-items:center;justify-content:center;color:var(--blue-mid);margin-bottom:1.25rem;transition:background .32s,color .32s,transform .35s cubic-bezier(.34,1.56,.64,1);}
+.ec:hover .ei{background:var(--blue-mid);color:#fff;transform:rotate(-8deg) scale(1.08);}
+.ei svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.ed{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.3rem;}
+.esp{font-size:.82rem;color:var(--blue-mid);font-weight:500;margin-bottom:.75rem;}
+.esl{font-size:.85rem;color:var(--text);display:inline-flex;align-items:center;gap:.35rem;margin-bottom:.3rem;position:relative;transition:color .2s;}
+.esl::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--blue-mid);transition:width .3s;border-radius:1px;}
+.esl:hover{color:var(--blue-mid);}
+.esl:hover::after{width:calc(100% - 18px);}
+.esl:hover .ext{opacity:1;transform:translate(2px,-2px);}
+.ey{font-size:.78rem;color:var(--text-muted);}
+
+/* ═══ CERTIFICATIONS ════════════════════ */
+#certifications{background:var(--bg-soft);}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.cert{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:.85rem;color:var(--text);position:relative;overflow:hidden;transition:border-color .22s,box-shadow .22s,transform .22s;}
+.cert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue-mid);transform:scaleY(0);transform-origin:top;transition:transform .28s;}
+.cert:hover{border-color:var(--blue-200);box-shadow:var(--shadow);transform:translateX(4px);}
+.cert:hover::before{transform:scaleY(1);}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--blue-mid);flex-shrink:0;margin-top:.55em;transition:transform .22s;}
+.cert:hover .cdot{transform:scale(1.5);}
+.ctxt{font-size:.83rem;color:var(--text);line-height:1.45;font-weight:300;flex:1;}
+.cext{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0;margin-top:.4em;flex-shrink:0;transition:opacity .22s,transform .22s;}
+.cert:hover .cext{opacity:.65;transform:translate(2px,-2px);}
+
+/* ═══ CONTACT ═══════════════════════════ */
+#contact{background:var(--bg-stripe);padding:6rem 4rem;position:relative;overflow:hidden;}
+#contact::before{content:'';position:absolute;right:-80px;top:-80px;width:480px;height:480px;border-radius:50%;border:1px solid rgba(255,255,255,.04);animation:spin-cw 90s linear infinite;}
+#contact::after{content:'';position:absolute;right:-40px;top:-40px;width:320px;height:320px;border-radius:50%;border:1px solid rgba(255,255,255,.04);animation:spin-ccw 70s linear infinite;}
+.contact-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1;}
+.cont-h{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.25rem;}
+.cont-h em{font-style:italic;color:#60a5fa;}
+.cont-sub{font-size:.92rem;color:rgba(255,255,255,.45);font-weight:300;line-height:1.7;}
+.cc-list{display:flex;flex-direction:column;gap:.85rem;}
+.ccard{display:flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1.2rem 1.5rem;color:#fff;position:relative;overflow:hidden;transition:background .22s,border-color .22s,transform .22s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.ccard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#60a5fa;transform:scaleY(0);transition:transform .28s;}
+.ccard:hover{background:rgba(37,99,235,.16);border-color:rgba(37,99,235,.35);transform:translateX(6px);}
+.ccard:hover::before{transform:scaleY(1);}
+.cicon{width:44px;height:44px;border-radius:11px;background:rgba(37,99,235,.22);color:#60a5fa;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .22s;}
+.ccard:hover .cicon{transform:rotate(-8deg) scale(1.08);background:rgba(37,99,235,.36);}
+.cicon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.clbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);font-weight:500;margin-bottom:.2rem;}
+.cval{font-size:.9rem;color:#ffffff;font-weight:400;word-break:break-word;}
+.foot{max-width:1200px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.76rem;color:rgba(255,255,255,.28);position:relative;z-index:1;}
+
+/* ═══ BACK TO TOP ═══════════════════════ */
+.btt{position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;border-radius:50%;background:var(--blue-mid);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:150;opacity:0;visibility:hidden;transform:translateY(20px);transition:opacity .3s,visibility .3s,transform .3s,background .2s;}
+.btt.show{opacity:1;visibility:visible;transform:translateY(0);animation:pulse-ring 2.5s infinite;}
+.btt:hover{background:var(--blue);transform:translateY(-3px) scale(1.06);}
+.btt svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.ral{margin-top:.6rem;display:flex;flex-direction:column;gap:.3rem;padding-top:.5rem;border-top:1px dashed var(--border-lt);}
+.ra{font-size:.78rem;color:var(--text-muted);display:flex;align-items:flex-start;gap:.45rem;line-height:1.55;}
+.ra-dot{width:5px;height:5px;border-radius:50%;background:var(--blue-mid);flex-shrink:0;margin-top:.45em;}
+
+/* ═══ REVEAL ════════════════════════════ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;} .d4{transition-delay:.32s;}
+
+/* ═══ DRAWER ════════════════════════════ */
+.d-overlay{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);z-index:240;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+.d-overlay.open{opacity:1;visibility:visible;}
+.drawer{position:fixed;top:0;right:-100%;bottom:0;width:75%;max-width:340px;background:var(--bg-card);border-left:1px solid var(--border);z-index:250;padding:5rem 1.5rem 2rem;display:flex;flex-direction:column;transition:right .35s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.12);}
+.drawer.open{right:0;}
+.drawer a{display:block;padding:.85rem 1rem;color:var(--text);font-size:.95rem;border-radius:10px;margin-bottom:.25rem;transition:color .2s,background .2s,transform .2s;}
+.drawer a:hover,.drawer a.active{color:var(--blue-mid);background:var(--blue-50);transform:translateX(4px);}
+.drawer .d-cta{background:var(--blue-mid);color:#fff!important;margin-top:1rem;text-align:center;font-weight:500;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.drawer .d-cta:hover{background:var(--blue);transform:none;}
+
+
+/* ═══ RECOMMENDATIONS ══════════════════ */
+#recommendations{background:var(--bg);}
+.rec-carousel-wrap{overflow:hidden;background:var(--bg);-webkit-mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);}
+.rec-track{display:flex;gap:1.25rem;width:max-content;animation:rec-scroll 50s linear infinite;}
+.rec-track .rec{flex-shrink:0;width:360px;}
+@media(max-width:840px){.rec-track .rec{width:280px;}}
+@media(max-width:480px){.rec-track .rec{width:260px;}}
+@keyframes rec-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.rec-carousel-wrap:hover .rec-track{animation-play-state:paused;}
+.rec{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .28s,box-shadow .28s,transform .28s;align-self:stretch;}
+.rec:hover{border-color:var(--blue-200);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.rec::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue-mid),var(--blue-lt));transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.rec:hover::before{transform:scaleX(1);}
+.rec-ql{font-family:Georgia,serif;font-size:3.5rem;line-height:.9;color:var(--blue-100);position:absolute;top:.85rem;right:1.1rem;font-weight:700;user-select:none;pointer-events:none;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.rec-text{font-size:.86rem;color:var(--text-muted);line-height:1.72;font-weight:300;flex:1;margin-bottom:1.25rem;padding-right:1.5rem;}
+.rec-footer{display:flex;align-items:center;gap:.85rem;padding-top:1rem;border-top:1px solid var(--border-lt);}
+.rec-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;letter-spacing:.02em;background:var(--blue-50);color:var(--blue-mid);border:1.5px solid var(--blue-100);}
+.rec-info{flex:1;min-width:0;}
+.rec-name{font-size:.88rem;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:.3rem;transition:color .2s;text-decoration:none;}
+.rec-name:hover{color:var(--blue-mid);}
+.rec-name svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.4;transition:opacity .2s;}
+.rec-name:hover svg{opacity:.9;}
+.rec-jobtitle{font-size:.73rem;color:var(--text-muted);margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rec-rel{display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;font-weight:600;color:var(--blue-mid);background:var(--blue-50);border:1px solid var(--blue-100);padding:.18rem .55rem;border-radius:20px;margin-top:.35rem;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.rec-rel-mgr{color:#16a34a;background:#dcfce7;border-color:#bbf7d0;}
+.rec-li-cta{display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;color:var(--blue-mid);font-weight:500;margin-top:2rem;text-decoration:none;transition:gap .2s;}
+.rec-li-cta:hover{gap:.7rem;}
+.rec-li-cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.rec-nav{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:1.75rem;}
+.rec-arrow{width:42px;height:42px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .22s;flex-shrink:0;}
+.rec-arrow:hover:not(:disabled){border-color:var(--blue-mid);color:var(--blue-mid);background:var(--blue-50);transform:scale(1.05);}
+.rec-arrow:disabled{opacity:.28;cursor:not-allowed;}
+.rec-arrow svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.rec-dots{display:flex;gap:.45rem;align-items:center;}
+.rec-dot{width:8px;height:8px;border-radius:4px;background:var(--border);border:none;cursor:pointer;padding:0;transition:all .25s;}
+.rec-dot.active{background:var(--blue-mid);width:22px;}
+
+
+
+/* ═══ PRINT ═════════════════════════════ */
+@media print{
+  /* ── Page setup ── */
+  @page{margin:1.4cm 1.6cm;size:A4;}
+
+  /* ── Hide chrome ── */
+  nav,.btt,.scroll-bar,.menu-btn,.theme-btn,.hero-blobs,.hero-deco,
+  .ring-outer,.ring-inner,.lang-sw,.cv-btn,.hero-btns,.sec-div,
+  .d-overlay,.drawer,.cursor-blink{display:none!important;}
+
+  /* ── CRITICAL: force all revealed/animated elements visible ── */
+  *,*::before,*::after{
+    animation:none!important;transition:none!important;
+    box-shadow:none!important;
+    opacity:1!important;transform:none!important;
+  }
+
+  /* ── Force light theme variables regardless of dark mode ── */
+  html,body,:root,[data-theme="dark"]{
+    --bg:#ffffff;--bg-soft:#f8faff;--bg-card:#ffffff;
+    --text:#111827;--text-muted:#6b7280;
+    --border:#e5e7eb;--border-lt:#f3f4f6;
+    --blue-mid:#1d4ed8;--blue-lt:#2563eb;
+    --blue-50:#eff6ff;--blue-100:#60a5fa;--blue-200:#60a5fa;
+    background:#fff!important;color:#111827!important;
+  }
+
+  /* ── Sections ── */
+  section,#hero,.sw,div[id]{background:#fff!important;}
+  #comp-bg{background:#f8faff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Hero ── */
+  #hero{min-height:auto!important;padding-top:.5rem!important;padding-bottom:.5rem!important;}
+  .hero-inner{grid-template-columns:1fr!important;padding:.5rem 0!important;gap:.75rem!important;}
+  .hero-right{display:none!important;}
+  h1.hero-name{font-size:2.4rem!important;letter-spacing:-.03em;}
+  .hero-badge{margin-bottom:.75rem!important;}
+  .hero-quote{margin-bottom:1.25rem!important;}
+  .hero-loc{margin-bottom:.75rem!important;}
+
+  /* ── Metrics stripe ── */
+  .metrics-stripe{
+    background:#0f172a!important;padding:1.5rem!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .metrics-grid{grid-template-columns:repeat(4,1fr)!important;gap:1rem!important;}
+  .metric-num{color:#60a5fa!important;font-size:2rem!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .metric-label{color:rgba(255,255,255,.55)!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Experience ── */
+  .sw{padding:2rem 0!important;}
+  .exp-layout{grid-template-columns:180px 1fr!important;gap:2rem!important;}
+  .tl-line{background:#1d4ed8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .co::before{background:#1d4ed8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .rc{background:#f8faff!important;border-color:#e5e7eb!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .ra-dot{background:#1d4ed8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Competencies ── */
+  .cc{grid-template-columns:44px 1fr!important;padding:1rem!important;}
+  .pills{grid-column:1/-1!important;}
+  .pill{border:1px solid #e5e7eb!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .ci{background:#eff6ff!important;border-color:#60a5fa!important;color:#1d4ed8!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Education ── */
+  .edu-grid{grid-template-columns:repeat(3,1fr)!important;}
+  .ec::after{background:#1d4ed8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Certifications ── */
+  .cert-grid{grid-template-columns:1fr 1fr!important;}
+  .cdot{background:#1d4ed8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Contact ── */
+  #contact{
+    background:#0f172a!important;padding:2rem 0!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .contact-in{grid-template-columns:1fr 1fr!important;gap:2rem!important;max-width:100%!important;}
+  .cont-h{color:#fff!important;font-size:1.8rem!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .cont-h em{color:#60a5fa!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .cont-sub{color:rgba(255,255,255,.5)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .ccard{
+    background:rgba(255,255,255,.06)!important;
+    border-color:rgba(255,255,255,.12)!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .cicon{background:rgba(37,99,235,.22)!important;color:#60a5fa!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .clbl{color:rgba(255,255,255,.45)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .cval{color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .foot{color:rgba(255,255,255,.3)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .foot span{color:rgba(255,255,255,.3)!important;}
+
+  /* ── Tags, pills, badges ── */
+  .tag,.pill,.lang-level,.hero-badge,.hero-loc,.sec-lbl{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .name-accent{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .lang-bar-fill{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .badge-dot{background:#22c55e!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  /* ── Page breaks ── */
+  .co,.rc,.cc,.ec,.cert{break-inside:avoid;}
+  #experience,#competencies,#education,#certifications{break-before:auto;}
+}
+
+/* ═══ RESPONSIVE ════════════════════════ */
+@media(max-width:1024px){
+  nav{padding:0 2rem;}
+  .nav-links li:nth-child(n+5){display:none;}
+  .hero-inner{padding:3rem 2rem;gap:3rem;}
+  .sw{padding:5rem 2rem;}
+  .exp-layout{grid-template-columns:200px 1fr;gap:3rem;}
+  .cc{grid-template-columns:48px 1fr;} .pills{grid-column:1/-1;}
+}
+@media(max-width:840px){
+  nav{padding:0 1.25rem;height:62px;}
+  .nav-brand-name{display:none;} .nav-links{display:none;} .menu-btn{display:flex;}
+  .lang-sw{margin-left:.25rem;}
+  #hero{padding-top:62px;min-height:auto;}
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 1.25rem 3.5rem;}
+  .hero-deco,.ring-outer,.ring-inner{display:none;}
+  .blob-a{width:340px;height:340px;right:-100px;top:-30px;}
+  .blob-b{width:260px;height:260px;left:-90px;bottom:-60px;}
+  h1.hero-name{font-size:clamp(2.6rem,10vw,3.4rem);}
+  .hero-right{width:100%;max-width:460px;}
+  .metrics-stripe{padding:2.5rem 1.25rem;}
+  .metrics-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+  .metric-num{font-size:2.4rem;}
+  .sw{padding:4rem 1.25rem;}
+  .exp-layout{grid-template-columns:1fr;gap:2rem;}
+  .cert-grid{grid-template-columns:1fr;}
+  .contact-in{grid-template-columns:1fr;gap:2.5rem;}
+  #contact{padding:4rem 1.25rem;}
+  .foot{flex-direction:column;gap:.4rem;}
+  .rc{flex-direction:column;align-items:flex-start;gap:.45rem;}
+  .rd{align-self:flex-start;}
+  .btt{bottom:1.25rem;right:1.25rem;width:44px;height:44px;}
+}
+@media(max-width:480px){
+  h1.hero-name{font-size:2.4rem;}
+  .btn{padding:.7rem 1.1rem;font-size:.82rem;}
+  .cc{grid-template-columns:1fr;padding:1.5rem;gap:1rem;}
+  .blob-a{width:260px;height:260px;} .blob-b{width:200px;height:200px;}
+  .lang-btn{padding:.28rem .5rem;font-size:.7rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="#hero" class="nav-brand">
+    <div class="nav-logo">GA</div>
+    <span class="nav-brand-name" data-i18n="name_full">Gevorg Arushanyan</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
+      <li><a href="#competencies" data-i18n="nav_comp">Competencies</a></li>
+      <li><a href="#education" data-i18n="nav_edu">Education</a></li>
+      <li><a href="#certifications" data-i18n="nav_cert">Certifications</a></li>
+      <li><a href="#recommendations" data-i18n="nav_rec">Recommendations</a></li>
+      <li><a href="mailto:g.b.arushanyan@gmail.com" class="nav-cta" data-i18n="nav_hire">Hire Me</a></li>
+    </ul>
+    <div class="lang-sw" id="langSw">
+      <button class="lang-btn active" data-l="en">EN</button>
+      <button class="lang-btn" data-l="ru">RU</button>
+    </div>
+    <button class="cv-btn" id="cvBtn" aria-label="Download CV">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span data-i18n="btn_cv">CV</span>
+    </button>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- drawer -->
+<div class="d-overlay" id="dOverlay"></div>
+<aside class="drawer" id="drawer">
+  <a href="#experience" data-close data-i18n="nav_exp">Experience</a>
+  <a href="#competencies" data-close data-i18n="nav_comp">Competencies</a>
+  <a href="#education" data-close data-i18n="nav_edu">Education</a>
+  <a href="#certifications" data-close data-i18n="nav_cert">Certifications</a>
+  <a href="#recommendations" data-close data-i18n="nav_rec">Recommendations</a>
+  <a href="#contact" data-close data-i18n="nav_contact">Contact</a>
+  <a href="mailto:g.b.arushanyan@gmail.com" class="d-cta" data-close data-i18n="nav_hire">Hire Me</a>
+</aside>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-blobs"><div class="blob-a" id="bA"></div><div class="blob-b" id="bB"></div></div>
+  <div class="hero-deco" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none" stroke="var(--blue-mid)" stroke-width=".5">
+      <circle cx="100" cy="100" r="80" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="60"/>
+      <circle cx="100" cy="100" r="40" stroke-dasharray="1 3"/>
+      <line x1="100" y1="20" x2="100" y2="180" stroke-dasharray="1 3"/>
+      <line x1="20" y1="100" x2="180" y2="100" stroke-dasharray="1 3"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span><span data-i18n="badge">Open to opportunities</span></div>
+      <h1 class="hero-name"><span data-i18n="name_first">Gevorg</span><br><span class="name-accent" data-i18n="name_last">Arushanyan</span></h1>
+      <p class="hero-role">
+        <span class="hero-role-line"></span>
+        <span data-i18n="hero_role">Product Manager · iGaming &amp; B2B Platforms</span>
+        <span class="cursor-blink" aria-hidden="true"></span>
+      </p>
+      <div class="hero-loc">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-i18n="hero_loc">Yerevan, Armenia</span>
+      </div>
+      <p class="hero-quote" data-i18n-html="hero_quote">Strategy without delivery<br>is just a slide deck.</p>
+      <div class="hero-btns">
+        <a href="mailto:g.b.arushanyan@gmail.com" class="btn btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span data-i18n="btn_touch">Get in Touch</span>
+        </a>
+        <a href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <span data-i18n="btn_tg">Telegram</span>
+        </a>
+        <a href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span data-i18n="btn_li">LinkedIn</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="ring-outer" aria-hidden="true"></div>
+      <div class="ring-inner" aria-hidden="true"></div>
+      <div class="lang-card" id="langCard">
+        <div class="lang-card-header">
+          <div class="lang-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="lang-card-title" data-i18n="lc_title">Languages</div>
+            <div class="lang-card-sub" data-i18n="lc_sub">Proficiency overview</div>
+          </div>
+        </div>
+        <div class="lang-list">
+          <div>
+            <div class="lang-row-head"><span class="lang-name-text" data-i18n="l_hy">Armenian</span><span class="lang-level" data-i18n="l_native">Native</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="--lvl:100%"></div></div>
+          </div>
+          <div>
+            <div class="lang-row-head"><span class="lang-name-text" data-i18n="l_en">English</span><span class="lang-level" data-i18n="l_pro">Professional</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="--lvl:88%"></div></div>
+          </div>
+          <div>
+            <div class="lang-row-head"><span class="lang-name-text" data-i18n="l_ru">Russian</span><span class="lang-level" data-i18n="l_pro">Professional</span></div>
+            <div class="lang-bar"><div class="lang-bar-fill" style="--lvl:88%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METRICS ═══ -->
+<div class="metrics-stripe">
+  <div class="metrics-grid">
+    <div class="metric reveal"><div class="metric-num" data-n="6" data-s="+">0</div><div class="metric-label">Casino Launches</div></div>
+    <div class="metric reveal d1"><div class="metric-num" data-n="4" data-s="+">0</div><div class="metric-label" data-i18n="m_certs">Certifications</div></div>
+    <div class="metric reveal d2"><div class="metric-num" data-n="9" data-s="+">0</div><div class="metric-label">Years XP</div></div>
+    <div class="metric reveal d3"><div class="metric-num" data-n="3">0</div><div class="metric-label" data-i18n="m_lang">Languages</div></div>
+  </div>
+</div>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <div class="sw">
+    <span class="sec-lbl" data-i18n="s1_lbl">01 · Work Experience</span>
+    <h2 class="sec-h reveal" data-i18n="s1_h">Career Timeline</h2>
+    <p class="sec-sub reveal" data-i18n="s1_sub">A decade of driving agile delivery and product strategy across fintech, gaming, telecom, and e-commerce — from individual contributor to division lead and educator.</p>
+    <div class="exp-layout">
+      <aside class="exp-side reveal">
+        <div class="exp-cnt-lbl" data-i18n="s1_total_lbl">Total experience</div>
+        <div class="exp-cnt">9+<br><span data-i18n="s1_years">Years</span></div>
+        <p data-i18n="s1_p1">Proven track record of defining product vision, leading cross-functional teams, and delivering complex platform features across iGaming and B2B verticals.</p>
+        <p data-i18n="s1_p2">Currently Head of Product at Playtronix, owning the full product strategy and team.</p>
+      </aside>
+      <div class="tl">
+        <div class="tl-line"></div>
+        <div class="co reveal">
+          <div class="co-head">
+            <a class="co-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">Playtronix<svg class="ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <span class="tag" data-i18n="tag_current">Current</span>
+          </div>
+          <div class="roles"><div class="rc"><div><div class="rt">Head of Product Department</div>
+          <div class="ral">
+            <div class="ra"><span class="ra-dot"></span><span>Defining global Business Strategy and Product Vision; managing the product team including hiring and mentoring</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Successfully delivered 6 full-scale iGaming partner casino platform launches</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Built Bonus Engine: User Challenges, Raffles, Jackpots, Wheels, Wager Races; Retention & Loyalty systems</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Developed Segmentation Engine with advanced report filtration; overhauled Backoffice BO Reporting & CMS</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Architecting Jira workflows and governing the product roadmap, backlog, and long-term development cycles</span></div>
+          </div></div><span class="rd">2025 — <span data-i18n="r_present">Present</span></span></div></div>
+        </div>
+        <div class="co reveal">
+          <div class="co-head">
+            <a class="co-name" href="https://www.softconstruct.com" target="_blank" rel="noopener">Softconstruct<svg class="ext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <span class="tag">Game Provider</span>
+          </div>
+          <div class="roles"><div class="rc"><div><div class="rt">Product Manager</div><div class="rs"><a href="https://creedroomz.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">CreedRoomz</a></div>
+          <div class="ral">
+            <div class="ra"><span class="ra-dot"></span><span>Competitor analysis / Market Research · Roadmap and Backlog Management · Task Prioritization</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>PRD / FRD / TRD / Release Notes · Licensing and Certification · Agile Processes, Scrum/Kanban</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Shipped 15+ live games: Andar Bahar, Teen Patti, Video Poker, Casino Hold'em, 3 Card Poker, Bingo, Keno, Russian Poker, Sic Bo and more</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Delivered Bet Builder for Roulette, Chip Customizer, Auto Play, Design System, and Product System</span></div>
+          </div></div><span class="rd">2022 — 2025</span></div></div>
+        </div>
+        <div class="co reveal">
+          <div class="co-head">
+            <span class="co-name" style="cursor:default">GLOBBING Artsakh Branch</span>
+            <span class="tag">Logistics · Franchise</span>
+          </div>
+          <div class="roles"><div class="rc"><div><div class="rt">Co-founder</div>
+          <div class="ral">
+            <div class="ra"><span class="ra-dot"></span><span>Co-founded and operated a franchise branch of the GLOBBING logistics company in Artsakh</span></div>
+          </div></div><span class="rd">2017 — 2022</span></div></div>
+        </div>
+        <div class="co reveal">
+          <div class="co-head">
+            <span class="co-name" style="cursor:default">Government Department</span>
+            <span class="tag">Public Sector</span>
+          </div>
+          <div class="roles"><div class="rc"><div><div class="rt">Head of Scientific-Educational & External Communications</div>
+          <div class="ral">
+            <div class="ra"><span class="ra-dot"></span><span>Member of state workers testing commission; contest commission for selection of personnel for government bodies</span></div>
+            <div class="ra"><span class="ra-dot"></span><span>Member of civil servants certification commission</span></div>
+          </div></div><span class="rd">2013 — 2022</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ═══ COMPETENCIES ═══ -->
+<div id="comp-bg"><div id="competencies" class="sw">
+  <span class="sec-lbl" data-i18n="s2_lbl">02 · Core Competencies</span>
+  <h2 class="sec-h reveal" data-i18n="s2_h">What I Bring to the Table</h2>
+  <p class="sec-sub reveal" data-i18n="s2_sub">A blend of strategic product thinking, agile delivery muscle, and AI-augmented productivity — built over 8+ years of leading teams through ambiguity into shipped, measurable outcomes.</p>
+  <div class="comp-list">
+    <div class="cc reveal"><div class="ci"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><div class="ct" data-i18n="c1h">Product Strategy & Vision</div><p class="cd" data-i18n="c1d">I define global product strategy and vision, aligning engineering, design, and business around a clear direction — from early discovery through OKR-driven roadmaps and long-term planning cycles.</p></div><div class="pills"><span class="pill">Product Vision</span><span class="pill">OKR Planning</span><span class="pill">Roadmapping</span><span class="pill">Stakeholder Alignment</span><span class="pill">Business Strategy</span></div></div>
+    <div class="cc reveal"><div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="ct" data-i18n="c2h">iGaming Platform Management</div><p class="cd" data-i18n="c2d">Deep expertise in iGaming: bonus engines (Challenges, Raffles, Jackpots, Wheels, Wager Races), player engagement tools, backoffice CMS, segmentation engines, and full casino platform launches.</p></div><div class="pills"><span class="pill">Bonus Engine</span><span class="pill">iGaming Platforms</span><span class="pill">Live Casino</span><span class="pill">Player Engagement</span><span class="pill">Segmentation</span><span class="pill">CMS</span></div></div>
+    <div class="cc reveal"><div class="ci"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></div><div><div class="ct" data-i18n="c3h">Team Leadership & Hiring</div><p class="cd" data-i18n="c3d">I build and manage product teams — running interviews, onboarding, and mentoring — while coordinating cross-department workflows to keep all squads aligned and moving fast.</p></div><div class="pills"><span class="pill">Team Building</span><span class="pill">Hiring & Interviews</span><span class="pill">Mentoring</span><span class="pill">Cross-dept Coordination</span><span class="pill">Process Design</span></div></div>
+    <div class="cc reveal"><div class="ci"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><div class="ct" data-i18n="c4h">Backlog & Roadmap Execution</div><p class="cd" data-i18n="c4d">I own the product backlog end-to-end: PRD / FRD / TRD / Release Notes, task prioritization, sprint planning, and backlog grooming — keeping delivery predictable and stakeholders informed.</p></div><div class="pills"><span class="pill">PRD / FRD / TRD</span><span class="pill">Backlog Grooming</span><span class="pill">Sprint Planning</span><span class="pill">Prioritization</span><span class="pill">Release Notes</span></div></div>
+    <div class="cc reveal"><div class="ci"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div><div class="ct" data-i18n="c5h">Tools & Workflow</div><p class="cd" data-i18n="c5d">Hands-on with Figma, Miro, Canva for design; Jira, Confluence, Trello, Notion for PM; and AI tools to accelerate research, synthesis, and documentation workflows.</p></div><div class="pills"><span class="pill">Figma</span><span class="pill">Miro</span><span class="pill">Canva</span><span class="pill">Jira</span><span class="pill">Confluence</span><span class="pill">Trello</span><span class="pill">Notion</span><span class="pill">AI Tools</span><span class="pill">Google Workspace</span></div></div>
+  </div>
+</div></div>
+
+<div class="sec-div"></div>
+
+<!-- ═══ EDUCATION ═══ -->
+<section id="education"><div class="sw">
+  <span class="sec-lbl" data-i18n="s3_lbl">03 · Education</span>
+  <h2 class="sec-h reveal" data-i18n="s3_h">Academic Background</h2>
+  <p class="sec-sub reveal" data-i18n="s3_sub">Dual master's degrees across management and international business, anchored on a foundation of economic theory.</p>
+  <div class="edu-grid">
+    <div class="ec reveal"><div class="ei"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="ed" data-i18n="e1d">IT Product Management</div><div class="esp" data-i18n="e1s">ACA</div><span class="esl">Armenian Code Academy (ACA)</span><div class="ey">Certified</div></div>
+    <div class="ec reveal d1"><div class="ei"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="ed" data-i18n="e2d">IT Project Management</div><div class="esp" data-i18n="e2s">ACA</div><span class="esl">Armenian Code Academy (ACA)</span><div class="ey">Certified</div></div>
+    <div class="ec reveal d2"><div class="ei"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg></div><div class="ed" data-i18n="e3d">Bachelor of Finance</div><div class="esp" data-i18n="e3s">ASAU</div><span class="esl">Armenian State Agrarian University (ASAU)</span><div class="ey">Graduated</div></div>
+  </div>
+</div></section>
+
+<div class="sec-div"></div>
+
+<!-- ═══ CERTIFICATIONS ═══ -->
+<section id="certifications"><div class="sw">
+  <span class="sec-lbl" data-i18n="s4_lbl">04 · Certifications</span>
+  <h2 class="sec-h reveal" data-i18n="s4_h">Courses &amp; Conferences</h2>
+  <p class="sec-sub reveal" data-i18n="s4_sub">Continuous learning across product management, agile coaching, and leadership.</p>
+  <div class="cert-grid">
+    <div class="cert reveal"><div class="cdot"></div><div class="ctxt">IT Product Management — ACA (Armenian Code Academy)</div></div>
+    <div class="cert reveal d1"><div class="cdot"></div><div class="ctxt">IT Project Management — ACA (Armenian Code Academy)</div></div>
+    <div class="cert reveal d2"><div class="cdot"></div><div class="ctxt">TFNT — ACA (Armenian Code Academy)</div></div>
+    <div class="cert reveal d3"><div class="cdot"></div><div class="ctxt">Agile Processes: Scrum / Kanban</div></div>
+    <div class="cert reveal"><div class="cdot"></div><div class="ctxt">Game Logics, UI/UX and Mathematics</div></div>
+    <div class="cert reveal d1"><div class="cdot"></div><div class="ctxt">Data Analyzing</div></div>
+    <div class="cert reveal d2"><div class="cdot"></div><div class="ctxt">iGaming Licensing and Certification</div></div>
+    <a href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener" class="cert reveal d3"><div class="cdot"></div><div class="ctxt">View full profile on LinkedIn</div><svg class="cext" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+  </div>
+</div></section>
+
+<div class="sec-div"></div>
+
+<!-- ═══ RECOMMENDATIONS ═══ -->
+<section id="recommendations"><div class="sw">
+  <span class="sec-lbl" data-i18n="s5_lbl">05 · Recommendations</span>
+  <h2 class="sec-h reveal" data-i18n="s5_h">What People Say</h2>
+  <p class="sec-sub reveal" data-i18n="s5_sub">Recommendations from colleagues, direct managers, and partners — published on LinkedIn.</p>
+  <div class="rec-carousel-wrap">
+    <div class="rec-track" id="recTrack">
+
+    <div class="rec reveal">
+      <div class="rec-ql">&ldquo;</div>
+      <p class="rec-text" data-i18n="rec1">Gevorg brings a rare combination of strategic clarity and hands-on execution. As Head of Product he set the tone for how a product team should operate — clear priorities, fast decisions, and real ownership.</p>
+      <div class="rec-footer">
+        <div class="rec-av">GA</div>
+        <div class="rec-info">
+          <a class="rec-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">LinkedIn Recommendation<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="rec-jobtitle">Playtronix · iGaming Platform</div>
+          <div class="rec-rel rec-rel-mgr" data-i18n="rel_manager">Direct Manager</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec reveal d1">
+      <div class="rec-ql">&ldquo;</div>
+      <p class="rec-text" data-i18n="rec2">Strong product leader with exceptional domain knowledge in iGaming platforms and bonus mechanics. Gevorg's ability to translate business needs into detailed specs is outstanding.</p>
+      <div class="rec-footer">
+        <div class="rec-av">SC</div>
+        <div class="rec-info">
+          <a class="rec-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">LinkedIn Recommendation<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="rec-jobtitle">Softconstruct · iGaming</div>
+          <div class="rec-rel" data-i18n="rel_colleague">Colleague</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec reveal d2">
+      <div class="rec-ql">&ldquo;</div>
+      <p class="rec-text" data-i18n="rec3">Working with Gevorg on the CreedRoomz game provider was a great experience. He consistently demonstrated deep product thinking and translated complex game logic into clear, actionable specs our engineers loved.</p>
+      <div class="rec-footer">
+        <div class="rec-av">CR</div>
+        <div class="rec-info">
+          <a class="rec-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">LinkedIn Recommendation<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="rec-jobtitle">CreedRoomz · Game Provider</div>
+          <div class="rec-rel" data-i18n="rel_colleague">Colleague</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec reveal d1">
+      <div class="rec-ql">&ldquo;</div>
+      <p class="rec-text" data-i18n="rec4">Gevorg is the kind of PM who earns trust quickly — he communicates clearly, prioritizes ruthlessly, and always keeps the team focused on what matters most.</p>
+      <div class="rec-footer">
+        <div class="rec-av">LI</div>
+        <div class="rec-info">
+          <a class="rec-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">LinkedIn Recommendation<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="rec-jobtitle">Product Colleague</div>
+          <div class="rec-rel" data-i18n="rel_colleague">Colleague</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec reveal d2">
+      <div class="rec-ql">&ldquo;</div>
+      <p class="rec-text" data-i18n="rec5">One of the most structured product thinkers I've worked with. Gevorg's roadmaps are always grounded in real user data and business impact, not just intuition.</p>
+      <div class="rec-footer">
+        <div class="rec-av">LI</div>
+        <div class="rec-info">
+          <a class="rec-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">LinkedIn Recommendation<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="rec-jobtitle">iGaming Colleague</div>
+          <div class="rec-rel" data-i18n="rel_colleague">Colleague</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec reveal d3">
+      <div class="rec-ql">&ldquo;</div>
+      <p class="rec-text" data-i18n="rec6">Gevorg built our segmentation engine from scratch and delivered it on schedule. His ownership mindset and attention to detail raised the bar for the whole product team.</p>
+      <div class="rec-footer">
+        <div class="rec-av">LI</div>
+        <div class="rec-info">
+          <a class="rec-name" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">LinkedIn Recommendation<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="rec-jobtitle">Playtronix · Product Team</div>
+          <div class="rec-rel" data-i18n="rel_colleague">Colleague</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    </div>
+
+
+  <a class="rec-li-cta" href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener">
+    View all recommendations on LinkedIn
+    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+
+</div></section>
+
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-in">
+    <div>
+      <h2 class="cont-h" data-i18n-html="cont_h">Let's build<br>something<br><em>worth delivering.</em></h2>
+      <p class="cont-sub" data-i18n="cont_sub">Open to senior product and project management roles, consulting engagements, and speaking opportunities. Based in Yerevan, Armenia — available globally.</p>
+    </div>
+    <div class="cc-list">
+      <a href="mailto:g.b.arushanyan@gmail.com" class="ccard"><div class="cicon"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><div class="clbl" data-i18n="c_email">Email</div><div class="cval">g.b.arushanyan@gmail.com</div></div></a>
+      <a href="tel:+37493660097" class="ccard"><div class="cicon"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><div class="clbl" data-i18n="c_phone">Phone</div><div class="cval">+374 93 66 00 97</div></div></a>
+      <a href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener" class="ccard"><div class="cicon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="clbl" data-i18n="c_li">LinkedIn</div><div class="cval">linkedin.com/in/gevorgarushanyan</div></div></a>
+    </div>
+  </div>
+  <div class="foot"><span data-i18n="foot1">© 2025 Gevorg Arushanyan · All rights reserved</span><span data-i18n="foot2">Product Manager · Yerevan, Armenia</span></div>
+</section>
+
+<button class="btt" id="bttBtn" aria-label="Back to top"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+<script>
+/* ════════════════════════════════════════
+   TRANSLATIONS
+════════════════════════════════════════ */
+const B = {
+en:{
+  r_mone_b1:'Driving product strategy, roadmap and stakeholder alignment across engineering and business teams',
+  r_mone_b2:'Establishing agile delivery framework and OKR-based planning cycles from early stage',
+  r_tm_b1:'Designed end-to-end curriculum covering Scrum, Kanban, SAFe, and core PM frameworks',
+  r_tm_b2:'Coaching professionals actively transitioning into IT project management careers',
+  r_sc1_b1:'Oversaw Lean-Agile delivery standards and transformation across the full PM division',
+  r_sc1_b2:'Managed multiple concurrent IT programs across fintech and gaming product lines simultaneously',
+  r_sc1_b3:'Mentored junior PMs and established best practices adopted division-wide',
+  r_sc2_b1:'Owned backlog and roadmap for a high-traffic international financial platform',
+  r_sc2_b2:'Ran 2-week sprint cycles coordinating cross-functional squads across dev, QA, and design',
+  r_sc3_b1:'Led end-to-end delivery of land-based gaming solutions across multiple international markets',
+  r_sc3_b2:'Maintained continuous release cadence by coordinating QA, development, and design teams',
+  r_sc4_b1:'Managed full product lifecycle for a B2B live gaming platform from discovery through launch',
+  r_sc4_b2:'Defined MVP scope, prioritised backlog, and shipped 2 major product releases',
+  r_sc5_b1:'Supported Lean-Agile PM division in process documentation, scheduling, and team onboarding',
+  r_fs_b1:'Delivered IT PM consulting: managing scope, risk, and stakeholder expectations end-to-end',
+  r_fs_b2:'Applied Agile frameworks to align delivery pace with fast-changing business priorities',
+  r_sfl1_b1:'Led all financial product initiatives and cross-functional project portfolio for 5+ years in a remote e-commerce environment',
+  r_sfl1_b2:'Built and managed project teams, owning the financial product roadmap end-to-end',
+  r_sfl1_b3:'Delivered continuous improvements to financial workflows, reducing operational friction',
+  r_sfl2_b1:'Managed financial product development and delivery in a fast-growing e-commerce operation',
+  r_sfl2_b2:'Coordinated between business, technical, and finance stakeholders to align on product decisions',
+  r_uc_b1:"Handled customer sales and after-service at the Central Branch of Armenia's leading telecom provider",
+  r_uc_b2:'Built deep product knowledge of telecom services, forming the foundation for later PM work',
+},
+ru:{
+  r_mone_b1:'Разрабатываю продуктовую стратегию, дорожную карту и согласовываю стейкхолдеров из инженерных и бизнес-команд',
+  r_mone_b2:'Выстраиваю agile-фреймворк поставки и OKR-планирование с ранней стадии',
+  r_tm_b1:'Разработал комплексную программу, охватывающую Scrum, Kanban, SAFe и основные PM-фреймворки',
+  r_tm_b2:'Коучинг профессионалов, активно переходящих в управление IT-проектами',
+  r_sc1_b1:'Контролировал Lean-Agile трансформацию и стандарты поставки в рамках всего PM-подразделения',
+  r_sc1_b2:'Управлял несколькими одновременными IT-программами в финтех и гейминге',
+  r_sc1_b3:'Наставничество младших PM и внедрение лучших практик на уровне подразделения',
+  r_sc2_b1:'Владел бэклогом и дорожной картой высоконагруженной международной финансовой платформы',
+  r_sc2_b2:'Вёл 2-недельные спринты, координируя кросс-функциональные команды разработки, QA и дизайна',
+  r_sc3_b1:'Руководил сквозной поставкой наземных игровых решений на нескольких международных рынках',
+  r_sc3_b2:'Поддерживал непрерывный ритм релизов, координируя команды QA, разработки и дизайна',
+  r_sc4_b1:'Управлял полным жизненным циклом B2B-игровой платформы от discovery до запуска',
+  r_sc4_b2:'Определил MVP, приоритизировал бэклог и выпустил 2 крупных релиза продукта',
+  r_sc5_b1:'Поддерживал Lean-Agile PM-подразделение в документировании процессов и онбординге команды',
+  r_fs_b1:'Консалтинг по управлению IT-проектами и продуктами: содержание, риски, ожидания стейкхолдеров',
+  r_fs_b2:'Применял Agile-фреймворки для синхронизации темпа поставки с быстро меняющимися приоритетами',
+  r_sfl1_b1:'Руководил всеми финансовыми продуктовыми инициативами и проектным портфелем 5+ лет в удалённом e-commerce',
+  r_sfl1_b2:'Формировал проектные команды и владел финансовой продуктовой дорожной картой от начала до конца',
+  r_sfl1_b3:'Непрерывно улучшал финансовые процессы, снижая операционные издержки',
+  r_sfl2_b1:'Управлял разработкой и поставкой финансовых продуктов в быстро растущем e-commerce',
+  r_sfl2_b2:'Координировал бизнес, технические и финансовые команды для согласования продуктовых решений',
+  r_uc_b1:'Обслуживал клиентов в Центральном офисе ведущего телеком-провайдера Армении',
+  r_uc_b2:'Сформировал глубокие знания телеком-продуктов — фундамент для последующей PM-карьеры',
+},
+};
+
+const T = {
+en:{
+  nav_exp:'Experience', nav_comp:'Competencies', nav_edu:'Education', nav_cert:'Certifications',
+  nav_contact:'Contact', nav_rec:'Recommendations', nav_hire:'Hire Me',
+  name_full:'Gevorg Arushanyan', name_first:'Gevorg', name_last:'Arushanyan',
+  badge:'Open to opportunities', hero_role:'Product Manager · iGaming & B2B Platforms',
+  hero_loc:'Yerevan, Armenia',
+  hero_quote:'Strategy without delivery<br>is just a slide deck.',
+  btn_cv:'Download CV',
+  btn_touch:'Get in Touch', btn_tg:'Telegram', btn_li:'LinkedIn',
+  lc_title:'Languages', lc_sub:'Proficiency overview',
+  l_hy:'Armenian', l_en:'English', l_ru:'Russian', l_native:'Native', l_pro:'Professional',
+  m_roles:'Roles held', m_certs:'Certifications', m_deg:'Degrees', m_lang:'Languages',
+  s1_lbl:'01 · Work Experience', s1_h:'Career Timeline',
+  s1_sub:'9+ years shaping digital products in iGaming, live casino, and B2B platforms — from individual contributor to Head of Product, launching 6 full-scale casino projects and building bonus engines from scratch.',
+  s1_total_lbl:'Total experience', s1_years:'Years',
+  s1_p1:'Proven track record of defining product vision, leading cross-functional teams, and delivering complex platform features across iGaming and B2B verticals.',
+  s1_p2:'Currently Head of Product at Playtronix, owning the full product strategy and team.',
+  r_present:'Present', tag_concurrent:'3 concurrent roles', tag_current:'Current', tag_edu:'Education', tag_fg:'Fintech · Gaming',
+  tag_con:'Contract', tag_ec:'E-Commerce · Remote', tag_tel:'Telecom',
+  r_mone:'Senior Product / Project Manager',
+  r_tm:'Lecturer — IT Project Management', r_tm_s:'Structured curriculum on PM methodologies',
+  r_sc1:'Lead Agile IT Project Manager', r_sc1s:'Lean-Agile Project Management Division',
+  r_sc2:'Lead Agile IT PM with Product Ownership', r_sc2s:'Financial Platform Team',
+  r_sc3:'Lead Agile IT Project Manager', r_sc3s:'Land Based Solutions Team',
+  r_sc4:'Agile PM with Product Ownership',
+  r_sc5:'Coordinator', r_sc5s:'Lean-Agile PM Division',
+  r_fs:'Lead Agile Project and Product Manager (IT)', r_fss:'Contract / consulting',
+  r_sfl1:'Head of Financial Products & Projects Management',
+  r_sfl2:'Financial Product and Project Manager',
+  r_uc:'Sales and Service Specialist', r_ucs:'Central Service Branch',
+  s2_lbl:'02 · Core Competencies', s2_h:'What I Bring to the Table',
+  s2_sub:'A blend of strategic product thinking, hands-on roadmap execution, and deep iGaming domain expertise — built over 9 years of shipping live products and leading product teams.',
+  c1h:'Product Strategy & Vision',
+  c1d:'I define global product strategy and vision, aligning engineering, design, and business around a clear direction — from early discovery through OKR-driven roadmaps and long-term planning cycles.',
+  c2h:'iGaming Platform Management',
+  c2d:'Deep expertise in iGaming: bonus engines (Challenges, Raffles, Jackpots, Wheels, Wager Races), player engagement tools, backoffice CMS, segmentation engines, and full casino platform launches.',
+  c3h:'Team Leadership & Hiring',
+  c3d:'I build and manage product teams — running interviews, onboarding, and mentoring — while coordinating cross-department workflows to keep all squads aligned and moving fast.',
+  c4h:'Backlog & Roadmap Execution',
+  c4d:'I own the product backlog end-to-end: PRD / FRD / TRD / Release Notes, task prioritization, sprint planning, and backlog grooming — keeping delivery predictable and stakeholders informed.',
+  c5h:'Tools & Workflow',
+  c5d:'Hands-on with Figma, Miro, Canva for design; Jira, Confluence, Trello, Notion for PM; and AI tools to accelerate research, synthesis, and documentation workflows.',
+  s3_lbl:'03 · Education', s3_h:'Academic Background',
+  s3_sub:'Finance degree combined with specialized IT product and project management certifications at ACA.',
+  e1d:'IT Product Management', e1s:'ACA',
+  e2d:'IT Project Management', e2s:'ACA',
+  e3d:'Bachelor of Finance', e3s:'ASAU',
+  s4_lbl:'04 · Certifications', s4_h:'Courses & Conferences',
+  s4_sub:'Continuous learning across product management, agile coaching, and leadership.',
+  cont_h:'Let\'s build<br>something<br><em>worth shipping.</em>',
+  cont_sub:'Open to product leadership roles in iGaming, B2B platforms, and digital products. Based in Yerevan, Armenia — available globally.',
+  c_email:'Email', c_tg:'Telegram', c_phone:'Phone', c_li:'LinkedIn',
+  rel_colleague:'Colleague', rel_manager:'Direct Manager', rel_classmate:'Classmate',
+  rec1:'Gevorg brings a rare combination of strategic clarity and hands-on execution. As Head of Product he set the tone for how a product team should operate — clear priorities, fast decisions, and real ownership.',
+  rec2:'Strong product leader with exceptional domain knowledge in iGaming platforms and bonus mechanics. Gevorg\'s ability to translate business needs into detailed specs is outstanding.',
+  rec3:'Working with Gevorg on the CreedRoomz game provider was a great experience. He consistently demonstrated deep product thinking and translated complex game logic into clear, actionable specs our engineers loved.',
+  rec4:'Gevorg is the kind of PM who earns trust quickly — he communicates clearly, prioritizes ruthlessly, and always keeps the team focused on what matters most.',
+  rec5:'One of the most structured product thinkers I\'ve worked with. Gevorg\'s roadmaps are always grounded in real user data and business impact, not just intuition.',
+  rec6:'Gevorg built our segmentation engine from scratch and delivered it on schedule. His ownership mindset and attention to detail raised the bar for the whole product team.',
+  s5_lbl:'05 · Recommendations', s5_h:'What People Say',
+  s5_sub:'Recommendations from colleagues, direct managers, and partners — published on LinkedIn.',
+  foot1:'© 2025 Gevorg Arushanyan · All rights reserved',
+  foot2:'Senior Product & Agile PM · Yerevan, Armenia',
+},
+
+
+ru:{
+  nav_exp:'Опыт', nav_comp:'Компетенции', nav_edu:'Образование', nav_cert:'Сертификаты',
+  nav_contact:'Контакты', nav_rec:'Рекомендации', nav_hire:'Нанять меня',
+  name_full:'Геворг Арушанян', name_first:'Геворг', name_last:'Арушанян',
+  badge:'Открыт к предложениям', hero_role:'Продакт-менеджер · iGaming & B2B платформы',
+  hero_loc:'Ереван, Армения',
+  hero_quote:'Стратегия без реализации —<br>это просто красивый слайд.',
+  btn_cv:'Скачать резюме',
+  btn_touch:'Связаться', btn_tg:'Telegram', btn_li:'LinkedIn',
+  lc_title:'Языки', lc_sub:'Уровень владения',
+  l_hy:'Армянский', l_en:'Английский', l_ru:'Русский', l_native:'Родной', l_pro:'Профессиональный',
+  m_roles:'Должностей', m_certs:'Сертификатов', m_deg:'Дипломов', m_lang:'Языков',
+  s1_lbl:'01 · Опыт работы', s1_h:'Хронология карьеры',
+  s1_sub:'9+ лет разработки цифровых продуктов в iGaming, live casino и B2B платформах — от менеджера до Head of Product, запуск 6 полноценных казино-проектов и разработка бонусных движков с нуля.',
+  s1_total_lbl:'Общий опыт', s1_years:'Лет',
+  s1_p1:'Подтверждённый опыт руководства кросс-функциональными командами, запуска продуктов и внедрения Lean-Agile трансформации в масштабе.',
+  s1_p2:'В настоящее время — Head of Product в Playtronix, отвечает за продуктовую стратегию и команду.',
+  r_present:'По наст. время', tag_concurrent:'3 роли одновременно', tag_current:'Текущая', tag_edu:'Образование', tag_fg:'Финтех · Гейминг',
+  tag_con:'Контракт', tag_ec:'E-Commerce · Удалённо', tag_tel:'Телеком',
+  r_mone:'Старший менеджер по продукту / проектам',
+  r_tm:'Преподаватель — Управление ИТ-проектами', r_tm_s:'Структурированная программа по методологиям управления проектами',
+  r_sc1:'Ведущий Agile IT-менеджер проектов', r_sc1s:'Подразделение Lean-Agile управления проектами',
+  r_sc2:'Ведущий Agile IT-PM с правами Product Owner', r_sc2s:'Команда финансовых платформ',
+  r_sc3:'Ведущий Agile IT-менеджер проектов', r_sc3s:'Команда наземных казино и букмекерских пунктов',
+  r_sc4:'Agile PM с правами Product Owner',
+  r_sc5:'Координатор', r_sc5s:'Подразделение Lean-Agile управления',
+  r_fs:'Ведущий Agile-менеджер проектов и продукта (ИТ)', r_fss:'Контракт / консалтинг',
+  r_sfl1:'Руководитель управления финансовыми продуктами и проектами',
+  r_sfl2:'Менеджер финансовых продуктов и проектов',
+  r_uc:'Специалист по продажам и обслуживанию', r_ucs:'Центральный сервисный офис',
+  s2_lbl:'02 · Ключевые компетенции', s2_h:'Что я предлагаю',
+  s2_sub:'Сочетание стратегического мышления, глубокой экспертизы в iGaming и практического опыта управления продуктом — 9+ лет запуска live-продуктов и руководства командами.',
+  c1h:'Продуктовая стратегия и виδение',
+  c1d:'Определяю глобальную стратегию и виδение продукта, выравниваю инженерные, дизайн- и бизнес-команды — от раннего discovery до OKR-роадмапов и долгосрочного планирования.',
+  c2h:'iGaming платформы',
+  c2d:'Глубокая экспертиза в iGaming: бонусные движки (Challenges, Raffles, Jackpots, Wheels, Wager Races), инструменты вовлечённости игроков, backoffice CMS, сегментация и полноценные запуски казино-платформ.',
+  c3h:'Управление командой и найм',
+  c3d:'Строю и управляю продуктовыми командами — провожу интервью, онбординг и менторинг — координируя межведомственные процессы для синхронной работы всех команд.',
+  c4h:'Бэклог и роадмап',
+  c4d:'Владею бэклогом от начала до конца: PRD / FRD / TRD / Release Notes, приоритизация задач, спринт-планирование и груминг — делаю поставку предсказуемой, а стейкхолдеров — информированными.',
+  c5h:'Инструменты и рабочие процессы',
+  c5d:'Практический опыт с Figma, Miro, Canva для дизайна; Jira, Confluence, Trello, Notion для PM; AI-инструменты для ускорения исследований и документации.',
+  s3_lbl:'03 · Образование', s3_h:'Академическое образование',
+  s3_sub:'Степень бакалавра финансов и специализированные сертификаты по IT продакт- и проджект-менеджменту в ACA.',
+  e1d:'IT Product Management', e1s:'ACA',
+  e2d:'IT Project Management', e2s:'ACA',
+  e3d:'Бакалавр финансов', e3s:'ГАУА',
+  s4_lbl:'04 · Сертификаты', s4_h:'Курсы и конференции',
+  s4_sub:'Непрерывное обучение в области управления продуктами, agile-коучинга и лидерства.',
+  cont_h:'Давайте создадим<br>что-то<br><em>достойное запуска.</em>',
+  cont_sub:'Открыт к ролям product-лидера в iGaming, B2B платформах и digital-продуктах. Нахожусь в Ереване — доступен по всему миру.',
+  c_email:'Эл. почта', c_tg:'Telegram', c_phone:'Телефон', c_li:'LinkedIn',
+  rel_colleague:'Коллега', rel_manager:'Прямой руководитель', rel_classmate:'Однокурсник',
+  rec1:'Геворг обладает редким сочетанием стратегической ясности и практического исполнения. Как Head of Product он задал стандарт работы продуктовой команды — чёткие приоритеты, быстрые решения и настоящая ответственность.',
+  rec2:'Сильный продуктовый лидер с исключительными знаниями в iGaming-платформах и бонусной механике. Способность Геворга переводить бизнес-требования в детальные спецификации — на высшем уровне.',
+  rec3:'Работать с Геворгом над CreedRoomz — удовольствие. Он неизменно демонстрировал глубокое продуктовое мышление и умел переводить сложную игровую логику в понятные, рабочие спецификации.',
+  rec4:'Геворг — из тех PM, которые быстро завоёвывают доверие. Чёткая коммуникация, жёсткая приоритизация и всегда держит команду сосредоточенной на главном.',
+  rec5:'Один из самых структурированных продуктовых мыслителей, с которыми я работал. Роадмапы Геворга всегда основаны на реальных данных и бизнес-метриках, а не на интуиции.',
+  rec6:'Геворг построил наш движок сегментации с нуля и сдал его в срок. Его менталитет владельца продукта и внимание к деталям подняли планку для всей команды.',
+  s5_lbl:'05 · Рекомендации', s5_h:'Что говорят коллеги',
+  s5_sub:'Рекомендации от коллег, руководителей и партнёров — опубликованы на LinkedIn.',
+  foot1:'© 2025 Геворг Арушанян · Все права защищены',
+  foot2:'Продакт-менеджер · Ереван, Армения',
+},
+};
+
+/* ════════════════════════════════════════
+   DOWNLOAD CV — generates a clean A4 CV in a new window
+════════════════════════════════════════ */
+function generateCVHtml(lang) {
+  const t = T[lang];
+  const b = B[lang];
+  const isRu = lang === 'ru';
+  const name = isRu ? 'Геворг Арушанян' : 'Gevorg Arushanyan';
+  const font = isRu ? "'Noto Sans',Arial,sans-serif" : "Calibri,'Trebuchet MS',Arial,sans-serif";
+  const present = t.r_present;
+
+  function bs(keys){ return keys.map(k=>`<li>${b[k]||''}</li>`).join(''); }
+  function role(title,sub,dates,bkeys){
+    return `<div class="rr"><div class="rl"><span class="rt">${title}</span>${sub?`<span class="rs"> · ${sub}</span>`:''}</div><span class="rd">${dates}</span></div><ul class="bl">${bs(bkeys)}</ul>`;
+  }
+
+  const JOBS = [
+    { co:'Playtronix', dates:`2025 — ${present}`, roles:[
+        { tk:'Head of Product Department', sk:null, dt:`2025 — ${present}`, bk:[] }]},
+    { co:'Softconstruct · CreedRoomz', dates:'2022 — 2025', roles:[
+        { tk:'Product Manager', sk:'CreedRoomz Game Provider', dt:'2022 — 2025', bk:[] }]},
+    { co:'GLOBBING Artsakh Branch', dates:'2017 — 2022', roles:[
+        { tk:'Co-founder', sk:'Logistics Franchise', dt:'2017 — 2022', bk:[] }]},
+    { co:'Government Department', dates:'2013 — 2022', roles:[
+        { tk:'Head of Scientific-Educational & External Communications', sk:null, dt:'2013 — 2022', bk:[] }]},
+  ];
+
+  const expHtml = JOBS.map(j=>`
+    <div class="jb">
+      <div class="jh"><span class="co">${j.co}</span></div>
+      ${j.roles.map(r=>role(r.tk,r.sk,r.dt,r.bk)).join('')}
+    </div>`).join('');
+
+  const CERTS = [
+    'IT Product Management — ACA',
+    'IT Project Management — ACA',
+    'TFNT — ACA',
+    'Agile Processes: Scrum / Kanban',
+    'Game Logics, UI/UX and Mathematics',
+    'Data Analyzing',
+    'iGaming Licensing and Certification',
+  ];
+
+  const SKILLS = ['Product Strategy','Roadmapping','Backlog Management','PRD/FRD/TRD','iGaming Platforms','Bonus Engine','Figma','Miro','Canva','Jira','Confluence','Trello','Notion','Google Workspace','AI Tools','Scrum','Kanban'];
+
+  return `<!DOCTYPE html>
+<html lang="${lang}">
+<head><meta charset="UTF-8"><title>${name} — CV</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+@page{size:A4;margin:1.4cm 1.6cm;}
+body{font-family:${font};font-size:9.5pt;color:#111827;line-height:1.5;background:#fff;}
+a{color:inherit;text-decoration:none;}
+/* Header */
+.hdr{display:grid;grid-template-columns:1fr auto;gap:16px;padding-bottom:10px;margin-bottom:12px;border-bottom:2.5px solid #1d4ed8;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.name{font-size:21pt;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:#111827;}
+.jobtitle{font-size:10pt;font-weight:600;color:#1d4ed8;margin-top:3px;}
+.loc{font-size:8.5pt;color:#6b7280;margin-top:4px;}
+.contacts{display:flex;flex-direction:column;gap:3px;align-items:flex-end;justify-content:flex-end;}
+.ct{font-size:8pt;color:#6b7280;}
+/* Summary */
+.summary{font-size:9pt;color:#374151;font-style:italic;border-left:3px solid #2563eb;padding-left:10px;margin-bottom:14px;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+/* Sections */
+.st{font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#1d4ed8;border-bottom:1px solid #60a5fa;padding-bottom:3px;margin-bottom:9px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.st2{margin-top:14px;}
+/* Jobs */
+.jb{margin-bottom:9px;page-break-inside:avoid;}
+.jh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;}
+.co{font-size:10.5pt;font-weight:700;color:#111827;}
+.cd{font-size:8pt;color:#9ca3af;}
+.rr{display:flex;justify-content:space-between;align-items:baseline;margin-top:1px;}
+.rl{flex:1;}
+.rt{font-size:9pt;font-weight:600;color:#374151;}
+.rs{font-size:8.5pt;color:#6b7280;font-weight:400;}
+.rd{font-size:8pt;color:#9ca3af;white-space:nowrap;margin-left:10px;}
+.bl{list-style:none;margin:3px 0 5px 0;padding:0;}
+.bl li{position:relative;padding-left:11px;font-size:8.5pt;color:#4b5563;margin-bottom:2px;line-height:1.45;}
+.bl li::before{content:'▸';position:absolute;left:0;top:1px;color:#2563eb;font-size:7pt;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+/* Two col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+/* Education */
+.ei{margin-bottom:9px;page-break-inside:avoid;}
+.ed{font-size:9.5pt;font-weight:600;color:#111827;}
+.es{font-size:8.5pt;color:#1d4ed8;margin-top:1px;}
+.eu{font-size:8pt;color:#6b7280;margin-top:1px;}
+.ey{font-size:8pt;color:#9ca3af;}
+/* Certs */
+.ci{position:relative;padding-left:11px;font-size:8pt;color:#4b5563;margin-bottom:4px;line-height:1.4;}
+.ci::before{content:'•';position:absolute;left:0;color:#2563eb;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+/* Languages */
+.lr{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.ln{font-size:9pt;font-weight:500;color:#111827;min-width:78px;}
+.lb{flex:1;height:5px;background:#e5e7eb;border-radius:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.lf{height:100%;border-radius:3px;background:#1d4ed8;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.ll{font-size:7.5pt;color:#9ca3af;min-width:90px;text-align:right;}
+/* Skills */
+.pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;}
+.pill{font-size:7.5pt;color:#374151;background:#f3f4f6;border:1px solid #e5e7eb;padding:2px 7px;border-radius:4px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div>
+    <div class="name">${name}</div>
+    <div class="jobtitle">${t.hero_role}</div>
+    <div class="loc">${t.hero_loc}</div>
+  </div>
+  <div class="contacts">
+    <div class="ct">g.b.arushanyan@gmail.com</div>
+    <div class="ct">+374 93 66 00 97</div>
+    <div class="ct">linkedin.com/in/gevorgarushanyan</div>
+  </div>
+</div>
+
+<div class="summary">Product Manager with 9+ years in iGaming and B2B platforms. Head of Product at Playtronix, delivering 6 full-scale casino launches and building bonus engines, segmentation, and player engagement tools from scratch.</div>
+
+<div class="st">${t.s1_lbl.replace('01 · ','')}</div>
+<div class="exp">${expHtml}</div>
+
+<div class="two">
+  <div>
+    <div class="st">${t.s3_lbl.replace('03 · ','')}</div>
+    <div class="ei"><div class="ed">${t.e1d}</div><div class="es">${t.e1s}</div><div class="eu">Armenian Code Academy (ACA)</div></div>
+    <div class="ei"><div class="ed">${t.e2d}</div><div class="es">${t.e2s}</div><div class="eu">Armenian Code Academy (ACA)</div></div>
+    <div class="ei"><div class="ed">${t.e3d}</div><div class="es">${t.e3s}</div><div class="eu">Armenian State Agrarian University</div></div>
+
+    <div class="st st2">${t.lc_title}</div>
+    <div class="lr"><span class="ln">${t.l_hy}</span><div class="lb"><div class="lf" style="width:100%"></div></div><span class="ll">${t.l_native}</span></div>
+    <div class="lr"><span class="ln">${t.l_en}</span><div class="lb"><div class="lf" style="width:88%"></div></div><span class="ll">${t.l_pro}</span></div>
+    <div class="lr"><span class="ln">${t.l_ru}</span><div class="lb"><div class="lf" style="width:88%"></div></div><span class="ll">${t.l_pro}</span></div>
+  </div>
+  <div>
+    <div class="st">${t.s4_lbl.replace('04 · ','')}</div>
+    ${CERTS.map(c=>`<div class="ci">${c}</div>`).join('')}
+
+    <div class="st st2">${isRu ? 'Навыки' : 'Skills'}</div>
+    <div class="pills">${SKILLS.map(s=>`<span class="pill">${s}</span>`).join('')}</div>
+  </div>
+</div>
+</body></html>`;
+}
+
+function downloadCV() {
+  const lang = document.documentElement.getAttribute('data-lang') || 'en';
+  const cvWin = window.open('', '_blank', 'width=900,height=700');
+  if (!cvWin) { alert('Please allow popups for this site to download CV'); return; }
+  cvWin.document.write(generateCVHtml(lang));
+  cvWin.document.close();
+  setTimeout(() => { cvWin.focus(); cvWin.print(); }, 600);
+}
+document.getElementById('cvBtn').addEventListener('click', downloadCV);
+
+
+/* ════════════════════════════════════════
+   RECOMMENDATIONS CAROUSEL
+════════════════════════════════════════ */
+(function(){
+  const track=document.getElementById('recTrack');
+  if(!track) return;
+  // Duplicate cards so the loop is seamless
+  const originals=Array.from(track.children);
+  originals.forEach(c=>{ track.appendChild(c.cloneNode(true)); });
+})();
+
+/* ════════════════════════════════════════
+   LANGUAGE SWITCH
+════════════════════════════════════════ */
+function setLang(lang) {
+  if (!T[lang]) return;
+  const root = document.documentElement;
+  root.setAttribute('data-lang', lang);
+  root.setAttribute('lang', lang);
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = T[lang][el.dataset.i18nHtml];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.l === lang));
+
+  // sync drawer nav links that duplicate nav-links
+  document.querySelectorAll('.drawer a[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.textContent = v;
+  });
+
+  document.querySelectorAll('[data-ra]').forEach(el => {
+    const v = B[lang]?.[el.dataset.ra];
+    if (v !== undefined) el.textContent = v;
+  });
+  localStorage.setItem('ncLang', lang);
+}
+
+document.getElementById('langSw').addEventListener('click', e => {
+  const b = e.target.closest('[data-l]');
+  if (b) setLang(b.dataset.l);
+});
+
+/* ════════════════════════════════════════
+   THEME
+════════════════════════════════════════ */
+const root = document.documentElement;
+(function(){
+  const t = localStorage.getItem('ncTheme');
+  if (t) root.setAttribute('data-theme', t);
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) root.setAttribute('data-theme','dark');
+})();
+document.getElementById('themeBtn').addEventListener('click', () => {
+  const n = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', n);
+  localStorage.setItem('ncTheme', n);
+});
+
+/* ════════════════════════════════════════
+   INIT SAVED LANGUAGE
+════════════════════════════════════════ */
+(function(){
+  const saved = localStorage.getItem('ncLang');
+  if (saved && T[saved]) setLang(saved);
+})();;
+
+/* ════════════════════════════════════════
+   SCROLL + PARALLAX + BACK-TO-TOP
+════════════════════════════════════════ */
+const scrollBar = document.getElementById('scrollBar');
+const bttBtn    = document.getElementById('bttBtn');
+const bA = document.getElementById('bA'), bB = document.getElementById('bB');
+const mob = () => window.innerWidth <= 840;
+let raf = false;
+window.addEventListener('scroll', () => {
+  if (raf) return; raf = true;
+  requestAnimationFrame(() => {
+    const y = window.scrollY, dh = document.documentElement;
+    const pct = dh.scrollHeight - dh.clientHeight;
+    scrollBar.style.width = (pct > 0 ? (y/pct)*100 : 0) + '%';
+    bttBtn.classList.toggle('show', y > 600);
+    if (!mob() && y < 1000) {
+      bA.style.transform = `translateY(${y*.14}px)`;
+      bB.style.transform = `translateY(${y*-.09}px)`;
+    }
+    raf = false;
+  });
+}, {passive:true});
+bttBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ════════════════════════════════════════
+   REVEAL
+════════════════════════════════════════ */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-n]').forEach(counter);
+    if (e.target.hasAttribute('data-n')) counter(e.target);
+    revObs.unobserve(e.target);
+  });
+}, {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ════════════════════════════════════════
+   LANGUAGE BARS
+════════════════════════════════════════ */
+const lc = document.getElementById('langCard');
+new IntersectionObserver(en => {
+  if (en[0].isIntersecting) { lc.classList.add('bars-active'); }
+}, {threshold:.3}).observe(lc);
+
+/* ════════════════════════════════════════
+   COUNTER
+════════════════════════════════════════ */
+function counter(el) {
+  if (el._counted) return; el._counted = true;
+  const tgt = parseInt(el.dataset.n,10), sfx = el.dataset.s||'', dur = 1300, t0 = performance.now();
+  (function tick(now){ const p=Math.min((now-t0)/dur,1), v=1-Math.pow(1-p,3); el.textContent=Math.round(tgt*v)+sfx; if(p<1) requestAnimationFrame(tick); })(t0);
+}
+
+/* ════════════════════════════════════════
+   ACTIVE NAV
+════════════════════════════════════════ */
+const secs = document.querySelectorAll('section[id],div[id]');
+const navAs = document.querySelectorAll('.nav-links a[href^="#"],.drawer a[href^="#"]');
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    navAs.forEach(a => a.classList.remove('active'));
+    document.querySelectorAll(`a[href="#${e.target.id}"]`).forEach(a => {
+      if (!a.classList.contains('nav-cta') && !a.classList.contains('d-cta')) a.classList.add('active');
+    });
+  });
+}, {threshold:.38}).observe = (function(obs){ secs.forEach(s=>obs.observe(s)); return obs; })(new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(!e.isIntersecting) return; navAs.forEach(a=>a.classList.remove('active')); document.querySelectorAll(`a[href="#${e.target.id}"]`).forEach(a=>{ if(!a.classList.contains('nav-cta')&&!a.classList.contains('d-cta')) a.classList.add('active'); }); }); },{threshold:.38}));
+
+/* ════════════════════════════════════════
+   DRAWER
+════════════════════════════════════════ */
+const drawer = document.getElementById('drawer'), dOverlay = document.getElementById('dOverlay'), menuBtn = document.getElementById('menuBtn');
+const open  = () => { drawer.classList.add('open'); dOverlay.classList.add('open'); document.body.style.overflow='hidden'; };
+const close = () => { drawer.classList.remove('open'); dOverlay.classList.remove('open'); document.body.style.overflow=''; };
+menuBtn.addEventListener('click', open);
+dOverlay.addEventListener('click', close);
+document.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', close));
+document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
+
+/* ════════════════════════════════════════
+   INVISIBLE TRACKING — sends silent Telegram notifications
+   to the owner. Visitors never see any of this.
+════════════════════════════════════════ */
+(function() {
+  const TG_TOKEN = '';  // update with your own token
+  const TG_CHAT  = '';  // update with your own chat ID
+
+  function tgSend(msg) {
+    fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'HTML' })
+    }).catch(() => {});
+  }
+
+  function getInfo() {
+    const ua = navigator.userAgent || '';
+    let device = '🖥 Desktop';
+    if (/Mobi|Android|iPhone|iPad/i.test(ua)) device = '📱 Mobile';
+    else if (/Tablet|iPad/i.test(ua)) device = '📟 Tablet';
+
+    let browser = 'Unknown';
+    if (/Firefox/i.test(ua))        browser = 'Firefox';
+    else if (/Edg/i.test(ua))       browser = 'Edge';
+    else if (/Chrome/i.test(ua))    browser = 'Chrome';
+    else if (/Safari/i.test(ua))    browser = 'Safari';
+    else if (/Opera|OPR/i.test(ua)) browser = 'Opera';
+
+    const lang = navigator.language || '?';
+    const tz   = Intl.DateTimeFormat().resolvedOptions().timeZone || '?';
+    const ref  = document.referrer || 'Direct / Unknown';
+
+    const params     = new URLSearchParams(window.location.search);
+    const utmSource  = params.get('utm_source')   || params.get('ref') || null;
+    const utmMedium  = params.get('utm_medium')   || null;
+    const utmCampaign= params.get('utm_campaign') || null;
+
+    let refLine = '🔗 <b>Came from:</b> ' + ref;
+    if (utmSource) {
+      refLine += '\n📌 <b>Link param:</b> ' + utmSource;
+      if (utmMedium)    refLine += ' / ' + utmMedium;
+      if (utmCampaign)  refLine += ' / ' + utmCampaign;
+    }
+
+    const now = new Date().toLocaleString('en-GB', { timeZone: tz, hour12: false });
+    return { device, browser, lang, tz, refLine, now };
+  }
+
+  async function getLocation() {
+    try {
+      const r = await fetch('https://ipapi.co/json/');
+      const d = await r.json();
+      return '📍 ' + (d.city || '?') + ', ' + (d.region || '') + ', ' + (d.country_name || '?') +
+             '\n🌐 IP: ' + (d.ip || '?') +
+             (d.org ? '\n🏢 ISP: ' + d.org : '');
+    } catch(e) {
+      return '📍 Location unavailable';
+    }
+  }
+
+  // ── 1. PAGE VIEW ──────────────────────────────────────
+  window.addEventListener('load', async function() {
+    const i   = getInfo();
+    const loc = await getLocation();
+    const msg =
+      '👁 <b>Profile Viewed</b>\n' +
+      '🕐 ' + i.now + ' (' + i.tz + ')\n' +
+      i.device + ' · ' + i.browser + '\n' +
+      '🌐 Lang: ' + i.lang + '\n' +
+      loc + '\n' +
+      i.refLine;
+    tgSend(msg);
+  });
+
+  // ── 2. CV DOWNLOAD ────────────────────────────────────
+  var cvBtn = document.getElementById('cvBtn');
+  if (cvBtn) {
+    cvBtn.addEventListener('click', async function() {
+      const i   = getInfo();
+      const loc = await getLocation();
+      const msg =
+        '📄 <b>CV Downloaded!</b>\n' +
+        '🕐 ' + i.now + ' (' + i.tz + ')\n' +
+        i.device + ' · ' + i.browser + '\n' +
+        '🌐 Lang: ' + i.lang + '\n' +
+        loc + '\n' +
+        i.refLine;
+      tgSend(msg);
+    });
+  }
+
+  // ── 3. CONTACT LINK CLICKS ───────────────────────────
+  document.querySelectorAll('a.ccard').forEach(function(link) {
+    link.addEventListener('click', async function() {
+      const label = (link.querySelector('.clbl') || {}).innerText || link.href;
+      const i   = getInfo();
+      const loc = await getLocation();
+      const msg =
+        '🖱 <b>Contact Clicked: ' + label + '</b>\n' +
+        '🕐 ' + i.now + ' (' + i.tz + ')\n' +
+        i.device + ' · ' + i.browser + '\n' +
+        loc + '\n' +
+        i.refLine;
+      tgSend(msg);
+    });
+  });
+
+})();
+
+/* ════════════════════════════════════════
+   MAGNETIC BUTTONS (desktop only)
+════════════════════════════════════════ */
+if (!('ontouchstart' in window)) {
+  document.querySelectorAll('.btn').forEach(b => {
+    b.addEventListener('mousemove', e => {
+      if (mob()) return;
+      const r=b.getBoundingClientRect(), x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+      b.style.transform=`translate(${x*.14}px,${y*.18}px) translateY(-2px)`;
+    });
+    b.addEventListener('mouseleave', () => { b.style.transform=''; });
+  });
+}
+</script>
+</body>
+</html>
