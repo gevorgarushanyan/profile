@@ -286,7 +286,7 @@ h2.sec-h{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font
 .ra-dot{width:5px;height:5px;border-radius:50%;background:var(--blue-mid);flex-shrink:0;margin-top:.45em;}
 
 /* ═══ REVEAL ════════════════════════════ */
-.reveal{opacity:1;transform:none;}
+.reveal{opacity:1;transform:none;transition:none;}
 .reveal.in{opacity:1;transform:none;}
 .d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;} .d4{transition-delay:.32s;}
 
@@ -521,21 +521,21 @@ h2.sec-h{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font
       <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
     </button>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.toggle('open');o.classList.toggle('open');document.body.style.overflow=d.classList.contains('open')?'hidden':''">
       <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 </nav>
 
 <!-- drawer -->
-<div class="d-overlay" id="dOverlay"></div>
+<div class="d-overlay" id="dOverlay" onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''"></div>
 <aside class="drawer" id="drawer">
-  <a href="#experience" data-close data-i18n="nav_exp">Experience</a>
-  <a href="#competencies" data-close data-i18n="nav_comp">Competencies</a>
-  <a href="#education" data-close data-i18n="nav_edu">Education</a>
-  <a href="#domains" data-close>Domains</a>
-  <a href="#contact" data-close data-i18n="nav_contact">Contact</a>
-  <a href="mailto:g.b.arushanyan@gmail.com" class="d-cta" data-close data-i18n="nav_hire">Hire Me</a>
+  <a onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''" href="#experience" data-close data-i18n="nav_exp">Experience</a>
+  <a onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''" href="#competencies" data-close data-i18n="nav_comp">Competencies</a>
+  <a onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''" href="#education" data-close data-i18n="nav_edu">Education</a>
+  <a onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''" href="#domains" data-close>Domains</a>
+  <a onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''" href="#contact" data-close data-i18n="nav_contact">Contact</a>
+  <a onclick="var d=document.getElementById('drawer'),o=document.getElementById('dOverlay');d.classList.remove('open');o.classList.remove('open');document.body.style.overflow=''" href="mailto:g.b.arushanyan@gmail.com" class="d-cta" data-close data-i18n="nav_hire">Hire Me</a>
 </aside>
 
 <!-- ═══ HERO ═══ -->
@@ -622,11 +622,11 @@ h2.sec-h{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font
 <!-- ═══ METRICS ═══ -->
 <div class="metrics-stripe">
   <div class="metrics-grid" style="grid-template-columns:repeat(5,1fr);">
-    <div class="metric reveal"><div class="metric-num" data-n="6" data-s="+">0</div><div class="metric-label">Casino Launches</div></div>
-    <div class="metric reveal d1"><div class="metric-num" data-n="15" data-s="+">0</div><div class="metric-label">Games Shipped</div></div>
-    <div class="metric reveal d2"><div class="metric-num" data-n="30" data-s="+">0</div><div class="metric-label">Features Delivered</div></div>
-    <div class="metric reveal d3"><div class="metric-num" data-n="5" data-s="+">0</div><div class="metric-label">Years PM</div></div>
-    <div class="metric reveal d4"><div class="metric-num" data-n="3">0</div><div class="metric-label" data-i18n="m_lang">Languages</div></div>
+    <div class="metric reveal"><div class="metric-num">6+</div><div class="metric-label">Casino Launches</div></div>
+    <div class="metric reveal d1"><div class="metric-num">15+</div><div class="metric-label">Games Shipped</div></div>
+    <div class="metric reveal d2"><div class="metric-num">30+</div><div class="metric-label">Features Delivered</div></div>
+    <div class="metric reveal d3"><div class="metric-num">5+</div><div class="metric-label">Years PM</div></div>
+    <div class="metric reveal d4"><div class="metric-num">3</div><div class="metric-label" data-i18n="m_lang">Languages</div></div>
   </div>
 </div>
 
@@ -1269,8 +1269,20 @@ const revObs = new IntersectionObserver(entries => {
   });
 }, {threshold:.1});
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-// Fallback: ensure all reveal elements are visible after 800ms
-setTimeout(function(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }, 800);
+setTimeout(function(){
+  document.querySelectorAll('[data-n]').forEach(function(el){
+    var tgt = parseInt(el.getAttribute('data-n'), 10);
+    var sfx = el.getAttribute('data-s') || '';
+    var dur = 1300, t0 = performance.now();
+    function tick(now){
+      var p = Math.min((now-t0)/dur, 1);
+      var v = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(tgt*v) + sfx;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}, 100);
 
 /* ════════════════════════════════════════
    LANGUAGE BARS
@@ -1320,7 +1332,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
    to the owner. Visitors never see any of this.
 ════════════════════════════════════════ */
 (function() {
-  const TG_TOKEN = '8898569237:AAFmOlIwM-Y65mtBB9f8kGHGR-94VeVDpT0';
+  const TG_TOKEN = '8898569237:AAHfEyNukVUt-0ajSSbobrNBagNoBkulIzs';
   const TG_CHAT  = '1482812036';
 
   function tgSend(msg) {
