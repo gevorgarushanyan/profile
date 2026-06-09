@@ -3,8 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Gevorg Arushanyan — Product Manager">
-<title>Gevorg Arushanyan</title>
+<meta name="description" content="Gevorg Arushanyan — Senior Product Manager with 5+ years in iGaming and B2B platforms. 6 casino launches, 15+ live games, expert in affiliate systems, integrations, and product ops.">
+<meta name="keywords" content="Gevorg Arushanyan, Product Manager, iGaming, B2B, Armenia, Yerevan, Senior PM, casino platform">
+<meta name="author" content="Gevorg Arushanyan">
+<meta name="robots" content="index, follow">
+<title>Gevorg Arushanyan — Product Manager</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Gevorg Arushanyan — Product Manager">
+<meta property="og:description" content="Senior PM with 5+ years in iGaming and B2B platforms. 6 casino launches, 15+ live games shipped, deep expertise in affiliate systems and integrations.">
+<meta property="og:url" content="https://gevorgarushanyan.github.io/profile/">
+<meta property="og:site_name" content="Gevorg Arushanyan">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gevorg Arushanyan — Product Manager">
+<meta name="twitter:description" content="Senior PM with 5+ years in iGaming and B2B platforms. 6 casino launches, 15+ live games shipped.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://gevorgarushanyan.github.io/profile/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -567,7 +586,7 @@ h2.sec-h{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);font
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           <span data-i18n="btn_tg">Telegram</span>
         </a>
-        <a href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener" class="btn btn-outline">
+        <a href="https://www.linkedin.com/in/gevorgarushanyan/" target="_blank" rel="noopener" class="btn btn-outline" id="heroLiBtn">
           <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           <span data-i18n="btn_li">LinkedIn</span>
         </a>
@@ -1173,6 +1192,22 @@ document.getElementById('cvBtn').addEventListener('click', downloadCV);
   // Duplicate cards so the loop is seamless
   const originals=Array.from(track.children);
   originals.forEach(c=>{ track.appendChild(c.cloneNode(true)); });
+  // ── 4. HERO LINKEDIN CLICK ───────────────────────────
+  var heroLiBtn = document.getElementById('heroLiBtn');
+  if (heroLiBtn) {
+    heroLiBtn.addEventListener('click', async function() {
+      const i   = getInfo();
+      const loc = await getLocation();
+      const msg =
+        '🔗 <b>LinkedIn Clicked (Hero)</b>\n' +
+        '🕐 ' + i.now + ' (' + i.tz + ')\n' +
+        i.device + ' · ' + i.browser + '\n' +
+        loc + '\n' +
+        i.refLine;
+      tgSend(msg);
+    });
+  }
+
 })();
 
 /* ════════════════════════════════════════
